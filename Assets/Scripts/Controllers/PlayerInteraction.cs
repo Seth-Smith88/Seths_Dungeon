@@ -49,7 +49,7 @@ namespace Controllers
         {
             // When we leave the trigger, it sets everything back to the way it was before
             // we found the interactable object
-            interactableUI.gameObject.SetActive(false);
+            if(interactableUI!=null)interactableUI.gameObject.SetActive(false);
             _isNearInteractable = false;
             _interactableObject = null;
         }

@@ -26,12 +26,11 @@ namespace Controllers
             }
             else
             {
+                // Triggers our FadeIn to black - check out the script to see more!
+                blackOut.FadeIn();
                 // If a scene does exist, then we'll go there!
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            
-            // Triggers our FadeIn to black - check out the script to see more!
-            blackOut.FadeIn();
         }
     }
 }
