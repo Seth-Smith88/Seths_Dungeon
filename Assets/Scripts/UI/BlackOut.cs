@@ -17,7 +17,7 @@ namespace UI
             // First we assign those references to the components
             _anim = GetComponent<Animator>();
             _image = GetComponent<Image>();
-            
+
             // Then we turn on the Image component - it was off before so the screen isn't always
             // black, which would make working on the game pretty difficult!
             _image.enabled = true;

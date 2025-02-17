@@ -1,5 +1,6 @@
 using Interactables;
 using TMPro;
+using UI;
 using UnityEngine;
 using static UnityEngine.Input;
 
@@ -62,7 +63,7 @@ namespace Controllers
 
             // But if we're near something, and after we check that the interactable hasn't broken somehow,
             // once the player presses the required button, they will tell the object to interact!
-            if (GetKeyDown(_interactableObject.requiredInput) && _interactableObject != null)
+            if (GetKeyDown(_interactableObject.requiredInput) && _interactableObject != null && !DialogueSystem.IsActive)
             {
                 _interactableObject.Interact();
             }
