@@ -14,43 +14,51 @@ namespace Controllers
         // We assign these references in the Start() method.
         private Rigidbody2D _rigidbody2D;
         private Animator _animator;
-        
+
         // Then we set up our movement variables
-        public float speed; 
+        public float speed;
 
         // and some values related to Jumping
         [HideInInspector] public bool isJumping = false;
         public float jumpDuration = 1f;
         public float jumpHeight = 1f;
         private float _jumpTimer = 0;
-        private Vector3 _jumpOrigin;  
+        private Vector3 _jumpOrigin;
         private Vector3 _jumpVelocity; // Stores movement velocity during jump
-        
+
         // Ignore these, but this is a selection of bools to check if the player is moving
         // so that our animator knows when to stop. A fun trick but not required!
         private bool _downA, _downW, _downS, _downD;
-        
+
         void Start()
         {
             // These lines link up our component references as soon as the game starts
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
         }
-    
+
         void Update()
         {
             // This section captures Player input (keyboard only) and translates it into
             // movement, and turns the animator on.
-            
-            if (GetKeyDown(A)) 
+
+            if (GetKeyDown(A))
             {
                 // The line below flips the Sprite if the player moves in the opposite direction
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 _downA = true;
             }
-        
-            if (GetKeyDown(W)) {_downW = true;}
-            if (GetKeyDown(S)) {_downS = true;}
+
+            if (GetKeyDown(W))
+            {
+                _downW = true;
+            }
+
+            if (GetKeyDown(S))
+            {
+                _downS = true;
+            }
+
             if (GetKeyDown(D))
             {
                 _downD = true;
@@ -58,11 +66,26 @@ namespace Controllers
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
             }
 
-            if (GetKeyUp(A)) {_downA = false;}
-            if (GetKeyUp(W)) {_downW = false;}
-            if (GetKeyUp(S)) {_downS = false;}
-            if (GetKeyUp(D)) {_downD = false;}
-        
+            if (GetKeyUp(A))
+            {
+                _downA = false;
+            }
+
+            if (GetKeyUp(W))
+            {
+                _downW = false;
+            }
+
+            if (GetKeyUp(S))
+            {
+                _downS = false;
+            }
+
+            if (GetKeyUp(D))
+            {
+                _downD = false;
+            }
+
             // The below line starts the Animator if the Player is pressing buttons (remember the bools?)
             if (!_downA && !_downW && !_downS && !_downD)
             {
@@ -82,7 +105,7 @@ namespace Controllers
             {
                 _rigidbody2D.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
             }
-            
+
             // These lines control the movement while jumping
             if (Input.GetKeyDown("space") && !isJumping)
             {
@@ -103,7 +126,8 @@ namespace Controllers
                 float verticalOffset = Mathf.Sin((1 - _jumpTimer / jumpDuration) * Mathf.PI) * jumpHeight;
 
                 // Apply the jump motion with forward movement
-                transform.localPosition = _jumpOrigin + _jumpVelocity * (jumpDuration - _jumpTimer) + new Vector3(0, verticalOffset, 0);
+                transform.localPosition = _jumpOrigin + _jumpVelocity * (jumpDuration - _jumpTimer) +
+                                          new Vector3(0, verticalOffset, 0);
 
                 if (_jumpTimer <= 0)
                 {
@@ -117,5 +141,6 @@ namespace Controllers
         {
             return _downA || _downW || _downS || _downD;
         }
+
     }
 }
