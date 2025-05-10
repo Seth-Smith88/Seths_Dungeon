@@ -16,7 +16,7 @@ namespace Controllers
         private Animator _animator;
         
         // Then we set up our movement variables
-        public float speed;
+        public float speed; 
 
         // and some values related to Jumping
         [HideInInspector] public bool isJumping = false;
