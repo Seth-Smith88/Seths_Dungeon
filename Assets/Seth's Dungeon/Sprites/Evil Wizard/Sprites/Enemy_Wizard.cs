@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class EnemyPatrol : MonoBehaviour
+public class EvilWizard : MonoBehaviour
 {
     public float speed = 2f;
     public float moveDistance = 3f;
 
     private Vector2 startPos;
-    private bool movingRight = true;
+    private bool _movingRight = true;
 
     void Start()
     {
@@ -15,12 +15,12 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
-        if (movingRight)
+        if (_movingRight)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             if (transform.position.x >= startPos.x + moveDistance)
             {
-                movingRight = false;
+                _movingRight = false;
                 Flip();
             }
         }
@@ -29,7 +29,7 @@ public class EnemyPatrol : MonoBehaviour
             transform.Translate(Vector2.left * speed * Time.deltaTime);
             if (transform.position.x <= startPos.x - moveDistance)
             {
-                movingRight = true;
+                _movingRight = true;
                 Flip();
             }
         }

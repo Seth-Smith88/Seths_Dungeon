@@ -280,7 +280,6 @@ GameObject:
   - component: {fileID: 89786242}
   - component: {fileID: 89786241}
   - component: {fileID: 89786243}
-  - component: {fileID: 89786245}
   m_Layer: 6
   m_Name: 05 Player
   m_TagString: Player
@@ -296,9 +295,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89786229}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 521da8557a9664057be23e4db74f573e, type: 2}
+  m_Controller: {fileID: 9100000, guid: f1bf22aff540cd147b2beee5d343a9cc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -333,7 +332,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -378,12 +377,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -7385789195546760866, guid: 69a8d7eaff437c8438f2481bdb88c155, type: 3}
+  m_Sprite: {fileID: -7385789195546760866, guid: 78459a67b83e6494983c224d74521cec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.15, y: 0.16}
+  m_Size: {x: 0.35, y: 0.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -398,7 +397,7 @@ Transform:
   m_GameObject: {fileID: 89786229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.4, y: -0, z: 0}
+  m_LocalPosition: {x: -9.62, y: -0.86, z: 0}
   m_LocalScale: {x: 4.489153, y: 4.489153, z: 4.489153}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -625,18 +624,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableUI: {fileID: 1860961294}
---- !u!114 &89786245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89786229}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80109c3a2c942e44b40fb52f16f3288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &93018547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1183,10 @@ GameObject:
   - component: {fileID: 271001381}
   - component: {fileID: 271001380}
   - component: {fileID: 271001383}
+  - component: {fileID: 271001384}
+  - component: {fileID: 271001385}
+  - component: {fileID: 271001386}
+  - component: {fileID: 271001387}
   m_Layer: 0
   m_Name: Evil Wizard
   m_TagString: Untagged
@@ -1285,12 +1276,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271001379}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.65, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1827375665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &271001383
 MonoBehaviour:
@@ -1306,6 +1297,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   moveDistance: 3
+--- !u!114 &271001384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271001379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d100a513f940a78b1c948fef4e38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToTake: 0
+  onlyHitsPlayer: 0
+--- !u!114 &271001385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271001379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30881efe309829641909834b9e73af9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+--- !u!61 &271001386
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271001379}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.125, y: 3.5625}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.125, y: 3.5625}
+  m_EdgeRadius: 0
+--- !u!50 &271001387
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271001379}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 16000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &276323315
 GameObject:
   m_ObjectHideFlags: 0
@@ -45375,6 +45466,7 @@ Transform:
   - {fileID: 1081250766}
   - {fileID: 5250567}
   - {fileID: 2146296414}
+  - {fileID: 271001382}
   - {fileID: 1525404773}
   - {fileID: 1727801582}
   - {fileID: 1308826730}
@@ -46408,4 +46500,3 @@ SceneRoots:
   - {fileID: 89786235}
   - {fileID: 1827375665}
   - {fileID: 392049400}
-  - {fileID: 271001382}
