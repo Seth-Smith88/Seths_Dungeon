@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
+    public Transform player;
+    private Animator _animator;
     public float speed = 2f;
     public float moveDistance = 3f;
 
@@ -10,6 +12,9 @@ public class EnemyPatrol : MonoBehaviour
 
     void Start()
     {
+        _animator = GetComponent<Animator>();
+        _animator.enabled = false;
+        
         startPos = transform.position;
     }
 
@@ -31,6 +36,18 @@ public class EnemyPatrol : MonoBehaviour
             {
                 movingRight = true;
                 Flip();
+            }
+
+            {
+                if (player == null) return; // Exit if no player assigned
+
+
+                // Calculate the direction towards the player
+                Vector3 direction = (player.position - transform.position).normalized;
+                _animator.enabled = true;
+
+                // Move the enemy towards the player
+                transform.position += direction * speed * Time.deltaTime;
             }
         }
     }
