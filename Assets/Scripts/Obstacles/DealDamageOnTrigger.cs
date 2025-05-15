@@ -7,11 +7,21 @@ namespace Obstacles
     {
         public float damageToTake;
         public bool onlyHitsPlayer;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (onlyHitsPlayer && other.CompareTag("Player") || !onlyHitsPlayer)
+            if ((onlyHitsPlayer && other.CompareTag("Player")) || !onlyHitsPlayer)
             {
-                other.GetComponentInParent<HealthController>().TakeDamage(damageToTake);
+                var healthController = other.GetComponentInParent<HealthController>();
+
+                if (healthController != null)
+                {
+                    healthController.TakeDamage(damageToTake);
+                }
+                else
+                {
+                    Debug.LogWarning($"{other.name} entered trigger but has no HealthController component.");
+                }
             }
         }
 
