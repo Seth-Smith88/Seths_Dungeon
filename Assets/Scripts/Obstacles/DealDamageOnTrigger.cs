@@ -1,4 +1,3 @@
-using System;
 using Controllers;
 using UnityEngine;
 
@@ -14,6 +13,12 @@ namespace Obstacles
             {
                 other.GetComponentInParent<HealthController>().TakeDamage(damageToTake);
             }
+        }
+
+        public bool OnlyHitsPlayer
+        {
+            get => onlyHitsPlayer;
+            set => onlyHitsPlayer = value;
         }
     }
 }
